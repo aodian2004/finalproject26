@@ -1,0 +1,63 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@200..900&family=Ma+Shan+Zheng&family=Inter:wght@100..900&display=swap');
+
+@theme {
+  --font-serif: "STZhongsong", "华文中宋", "Noto Serif SC", serif;
+  --font-sans: "STZhongsong", "华文中宋", "Inter", sans-serif;
+  --font-zh: "STZhongsong", "华文中宋", "Ma Shan Zheng", cursive;
+  --font-song: "STZhongsong", "华文中宋", "Noto Serif SC", serif;
+
+  --color-parchment: #f5f2ed;
+  --color-ink: #2c241e;
+  --color-accent: #996633;
+  --color-brown: #996633;
+}
+
+@layer base {
+  body {
+    @apply bg-parchment text-ink font-serif antialiased;
+  }
+}
+
+.traditional-border {
+  border: 1px solid var(--color-ink);
+  position: relative;
+}
+
+.traditional-border::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  border: 1px solid var(--color-ink);
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+.scene-button {
+  @apply relative w-full border border-ink/40 cursor-pointer flex items-center justify-center text-center font-bold;
+  background: transparent;
+  font-family: var(--font-song);
+  color: #996633;
+  transition: all 0.2s ease;
+}
+
+.scene-button.active {
+  /* 按钮在选中时本身不需要有变化，只有中间图片变化 */
+}
+
+.scene-button::after {
+  content: '';
+  @apply absolute inset-0 border border-ink/5 pointer-events-none;
+  margin: 1px;
+}
+
+.marker-number {
+  @apply bg-[#f5f2ed]/80 backdrop-blur-sm border border-accent/30 rounded-full flex items-center justify-center font-serif font-bold shadow-xl z-10;
+  color: #b8a67f;
+  width: 40px;
+  height: 40px;
+  font-size: 18px;
+}
